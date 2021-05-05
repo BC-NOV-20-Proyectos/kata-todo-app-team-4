@@ -14,8 +14,8 @@
  *= require_self
  */
 
-$white_opaque: rgba(250, 250, 250, .3);
-$dark: #1F7972;
+$white_opaque: rgba(250, 250, 250, 0.3);
+$dark: #1f7972;
 * {
     box-sizing: border-box;
 }
@@ -31,7 +31,7 @@ body {
     background: #8db6cd;
     background: #8db6cd;
     background: #8db6cd;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 .clearfix:before,
@@ -57,22 +57,22 @@ body {
     background: $white_opaque;
     margin: 3em auto 0 auto;
     border-radius: 7px;
-    -webkit-box-shadow: 0 0 4px 3px rgba(0, 0, 0, .3);
-    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .03);
+    -webkit-box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.03);
     padding: 1em 0;
 }
 
 .todo_list_title {
     text-align: center;
     font-weight: 700;
-    font-size: 1.0rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     color: white;
     margin: 0;
     a {
         text-decoration: none;
         color: white;
-        transition: all .4s ease-in-out;
+        transition: all 0.4s ease-in-out;
         &:hover {
             opacity: 0.4;
         }
@@ -80,7 +80,7 @@ body {
 }
 
 .todo_list_sub_title {
-    margin: 0 0 3em 0;
+    margin: 1em 0 3em 0;
     text-align: center;
     font-size: 0.9em;
     color: $dark;
@@ -89,7 +89,7 @@ body {
 
 .index_row {
     padding: 2em;
-    border-bottom: 1px solid rgba(250, 250, 250, .3);
+    border-bottom: 1px solid rgba(250, 250, 250, 0.3);
     .todo_list_sub_title {
         margin-bottom: 0;
     }
@@ -98,13 +98,13 @@ body {
 #todo_items_wrapper {
     .row {
         width: 100%;
-        border-top: 1px solid rgba(250, 250, 250, .3);
-        border-bottom: 1px solid rgba(250, 250, 250, .3);
+        border-top: 1px solid rgba(250, 250, 250, 0.3);
+        border-bottom: 1px solid rgba(250, 250, 250, 0.3);
         .complete {
             width: 10%;
             float: left;
             text-align: center;
-            border-right: 1px solid rgba(250, 250, 250, .3);
+            border-right: 1px solid rgba(250, 250, 250, 0.3);
             padding: 1em 0;
         }
         .todo_item {
@@ -121,40 +121,44 @@ body {
             width: 10%;
             float: left;
             text-align: center;
-            border-left: 1px solid rgba(250, 250, 250, .3);
+            border-left: 1px solid rgba(250, 250, 250, 0.3);
             padding: 1em 0;
         }
         i {
             color: white;
-            transition: all .4s ease-in-out;
+            transition: all 0.4s ease-in-out;
             &:hover {
                 color: $dark;
             }
         }
     }
     #form {
+        &::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
         margin-top: 2em;
         padding: 0 5%;
         input[type="text"] {
-            width: 72%;
             margin-right: 2%;
             display: inline-block;
             outline: none;
-            background: rgba(250, 250, 250, .4);
+            background: rgba(250, 250, 250, 0.4);
             border: none;
             height: 40px;
             border-radius: 4px;
             padding: 1em 2em;
         }
         input[type="submit"] {
-            background: rgba(250, 250, 250, .4);
+            background: rgba(250, 250, 250, 0.4);
             outline: none;
             border: none;
             height: 40px;
             border-radius: 4px;
             width: 25%;
             display: inline-block;
-            transition: all .4s ease-in-out;
+            transition: all 0.4s ease-in-out;
             cursor: pointer;
             &:hover {
                 background: $dark;
@@ -170,7 +174,7 @@ body {
     display: block;
     margin: 1.5em auto 0 auto;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 0.8em;
     color: white;
     a {
         color: white;
@@ -188,10 +192,10 @@ label {
 input[type="text"],
 textarea {
     width: 100%;
-    margin: .5em 2% 1em 0;
+    margin: 0.5em 2% 1em 0;
     display: inline-block;
     outline: none;
-    background: rgba(250, 250, 250, .4);
+    background: rgba(250, 250, 250, 0.4);
     border: none;
     height: 40px;
     border-radius: 4px;
@@ -202,7 +206,9 @@ textarea {
     height: 200px;
 }
 
-input[type="submit"] {
+input[type="submit"],
+.links a {
+    float: right;
     background: white;
     outline: none;
     border: none;
@@ -210,7 +216,7 @@ input[type="submit"] {
     border-radius: 4px;
     width: 25%;
     display: inline-block;
-    transition: all .4s ease-in-out;
+    transition: all 0.4s ease-in-out;
     cursor: pointer;
     color: $dark;
     &:hover {
@@ -219,6 +225,29 @@ input[type="submit"] {
     }
 }
 
-::-webkit-input-placeholder {
+ ::-webkit-input-placeholder {
     color: $dark;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+    a {
+        height: auto;
+        line-height: 40px;
+        text-decoration: none;
+    }
+    .dummy {
+        width: 25%;
+    }
+}
+
+.links a.delete {
+    color: #f00;
+}
+
+.links a.delete:hover {
+    background: #f00;
+    color: #fff;
 }
