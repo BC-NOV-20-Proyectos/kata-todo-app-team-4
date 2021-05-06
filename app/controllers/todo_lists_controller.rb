@@ -8,6 +8,12 @@ class TodoListsController < ApplicationController
 
   # GET /todo_lists/1 or /todo_lists/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "ToDo List id: #{@todo_list.id}", template: "todo_lists/todo_list.html.erb"   # Excluding ".pdf" extension.
+      end
+    end
   end
 
   # GET /todo_lists/new
