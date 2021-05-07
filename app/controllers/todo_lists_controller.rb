@@ -4,12 +4,20 @@ class TodoListsController < ApplicationController
   # GET /todo_lists or /todo_lists.json
   def index
     @todo_lists = TodoList.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @todo_lists.to_csv }
+    end
   end
 
   # GET /todo_lists/1 or /todo_lists/1.json
   def show
+    @todo_lists = TodoItem.where("todo_list_id = #{params[:id]}")
+
     respond_to do |format|
       format.html
+      format.csv { send_data @todo_lists.to_csv }
       format.pdf do
         render pdf: "ToDo List id: #{@todo_list.id}", template: "todo_lists/todo_list.html.erb"   # Excluding ".pdf" extension.
       end
@@ -71,5 +79,9 @@ class TodoListsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def todo_list_params
       params.require(:todo_list).permit(:title, :description)
+    end
+
+    def todo_list_import_params
+      params.require(:todo_list).permit(:file)
     end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root "todo_lists#index" #after this test we're going to change this root for the login
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
