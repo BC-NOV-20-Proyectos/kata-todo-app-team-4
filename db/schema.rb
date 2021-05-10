@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_05_04_232001) do
 
-ActiveRecord::Schema.define(version: 2021_05_04_183809) do
-
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,8 +31,6 @@ ActiveRecord::Schema.define(version: 2021_05_04_183809) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "todo_items", "todo_lists"
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,5 +44,5 @@ ActiveRecord::Schema.define(version: 2021_05_04_183809) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-
+  add_foreign_key "todo_items", "todo_lists"
 end
