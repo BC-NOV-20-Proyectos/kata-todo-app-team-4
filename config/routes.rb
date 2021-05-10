@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   root "todo_lists#index" #after this test we're going to change this root for the login
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
