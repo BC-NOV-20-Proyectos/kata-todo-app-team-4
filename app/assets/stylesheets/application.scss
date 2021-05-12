@@ -27,10 +27,6 @@ html {
 body {
     height: 100%;
     background: #8db6cd;
-    background: #8db6cd;
-    background: #8db6cd;
-    background: #8db6cd;
-    background: #8db6cd;
     font-family: "Lato", sans-serif;
 }
 
@@ -250,4 +246,12 @@ input[type="submit"],
 .links a.delete:hover {
     background: #f00;
     color: #fff;
+}
+
+.titles {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
 }
